@@ -8,7 +8,7 @@ const STRIPE = new Stripe(process.env.STRIPE_API_KEY as string, {
   typescript: true,
 });
 const FRONTEND_URL = process.env.FRONTEND_URL as string;
-const STRIPE_API_KEY = process.env.STRIPE_WEBHOOK_SECRET as string;
+const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET as string;
 
 const getMyOrders = async (req: Request, res: Response) => {
   try {
@@ -46,7 +46,7 @@ const stripeWebhookHandler = async (req: Request, res: Response) => {
     event = STRIPE.webhooks.constructEvent(
       req.body,
       sig as string,
-      STRIPE_API_KEY
+      STRIPE_WEBHOOK_SECRET
     );
   } catch (error: any) {
     console.log(error);
