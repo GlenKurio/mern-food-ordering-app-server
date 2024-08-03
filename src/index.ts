@@ -6,6 +6,7 @@ import usersRoutes from "./routes/users";
 import restaurantsRoutes from "./routes/restaurants";
 import { v2 as cloudinary } from "cloudinary";
 import restaurantSearchRoutes from "./routes/restaurantSearch";
+import orderRoute from "./routes/order";
 const app = express();
 
 app.use(express.json());
@@ -14,6 +15,7 @@ app.use(cors());
 app.use("/api/v1/users", usersRoutes);
 app.use("/api/v1/restaurants", restaurantsRoutes);
 app.use("/api/v1/restaurant", restaurantSearchRoutes);
+app.use("/api/order", orderRoute);
 app.get("/health", (req: Request, res: Response) => {
   res.send({ message: "health OK!" });
 });
